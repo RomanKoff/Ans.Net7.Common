@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Ans_Net7_Common_Codegen"
+		   attributeFormDefault="unqualified"
+		   elementFormDefault="qualified"
+		   targetNamespace="http://tempuri.org/Ans.Net7.Common.Codegen.xsd"
+		   xmlns="http://tempuri.org/Ans.Net7.Common.Codegen.xsd"
+		   xmlns:mstns="http://tempuri.org/Ans.Net7.Common.Codegen.xsd"
+		   xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+
+	<xs:element name="schema" type="ct_schema"/>
+
+
+	<!-- complex types -->
+
+
+	<xs:complexType name="ct_schema">
+		<xs:sequence>
+			<xs:element name="face" type="ct_face" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="catalog" type="ct_catalog" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:complexType name="ct_face">
+		<xs:attribute name="key" type="st_varname" use="required"/>
+		<xs:attribute name="value" type="xs:string"/>
+	</xs:complexType>
+
+
+	<xs:complexType name="ct_catalog">
+		<xs:sequence>
+			<xs:element name="entity" type="ct_entity" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="name" type="st_varname" use="required"/>
+		<xs:attribute name="title" type="xs:string" use="required"/>
+		<xs:attribute name="rem" type="xs:string"/>
+	</xs:complexType>
+
+
+	<xs:complexType name="ct_entity">
+		<xs:sequence>
+			<xs:element name="property" type="ct_property" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="manyref" type="ct_manyref" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="entity" type="ct_entity" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="headers" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation xml:lang="ru">
+					Название сущности для заголовков форм List, Create, Details, Edit и Delete
+					(Множ. кто, что|кого, чего)
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="name" type="st_varname" use="required"/>
+		<xs:attribute name="type" default="Normal">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Normal"/>
+					<xs:enumeration value="Tree"/>
+					<xs:enumeration value="Ordered"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="timestamp" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation xml:lang="ru">
+					Флаг наличия данных о времени создания и обновления записи
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="rem" type="xs:string"/>
+	</xs:complexType>
+
+
+	<xs:complexType name="ct_manyref">
+		<xs:sequence>
+			<xs:element name="property" type="ct_property" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="target" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>
+					Полное имя целевой сущности для связывания
+					(должно включать имя просранства имен и родительских сущностей, если имеются)
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="headers" type="xs:string">
+			<xs:annotation>
+				<xs:documentation xml:lang="ru">
+					Название сущности для заголовков форм List, Create, Details, Edit и Delete
+					(Множ. кто, что|кого, чего)
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="timestamp" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation xml:lang="ru">
+					Флаг наличия данных о времени создания и обновления записи
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="rem" type="xs:string"/>
+	</xs:complexType>
+
+
+	<xs:complexType name="ct_property">
+		<xs:attribute name="name" type="st_varname" use="required"/>
+		<xs:attribute name="type" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Text50"/>
+					<xs:enumeration value="Text100"/>
+					<xs:enumeration value="Text250"/>
+					<xs:enumeration value="Text400"/>
+					<xs:enumeration value="TextBox400"/>
+					<xs:enumeration value="Memo"/>
+					<xs:enumeration value="Doc"/>
+					<xs:enumeration value="Name"/>
+					<xs:enumeration value="Varname"/>
+					<xs:enumeration value="Email"/>
+					<xs:enumeration value="Int"/>
+					<xs:enumeration value="Long"/>
+					<xs:enumeration value="Float"/>
+					<xs:enumeration value="Double"/>
+					<xs:enumeration value="Decimal"/>
+					<xs:enumeration value="Datetime"/>
+					<xs:enumeration value="Date"/>
+					<xs:enumeration value="Time"/>
+					<xs:enumeration value="Bool"/>
+					<xs:enumeration value="Enum"/>
+					<xs:enumeration value="Set"/>
+					<xs:enumeration value="Reference"/>
+					<xs:enumeration value="PtrInt"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="use" default="Normal">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Normal"/>
+					<xs:enumeration value="Required"/>
+					<xs:enumeration value="Unique"/>
+					<xs:enumeration value="AbsoluteUnique"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="defaultValue" type="xs:string"/>
+		<xs:attribute name="defaultSql" type="xs:string"/>
+		<xs:attribute name="readonly" type="xs:boolean"/>
+		<xs:attribute name="perfix" type="st_varname" use="optional"/>
+		<xs:attribute name="enum" type="xs:string"/>
+		<xs:attribute name="face" type="xs:string"/>
+		<xs:attribute name="rem" type="xs:string"/>
+	</xs:complexType>
+
+
+	<!-- simple types -->
+
+
+	<xs:simpleType name="st_varname">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="50"/>
+			<xs:pattern value="^([A-Z_][0-9a-zA-Z_]+)$"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+
+</xs:schema>

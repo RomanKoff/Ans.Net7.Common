@@ -1,0 +1,145 @@
+
+	System
+
+		[Key]
+		int Id
+
+		[FieldPtrInt(IsRequired = true)]
+		public int? ItemMasterPtr { get; set; }
+
+		[FieldPtrInt()]
+		public int? ItemParentPtr { get; set; } // ^Entity
+
+		[FieldInt()]
+		public int ItemOrder { get; set; }
+
+		[FieldPtrInt()]
+		public int? ItemRef{Entity1}Ptr { get; set; } // ^Entity1
+
+		[FieldPtrInt()]
+		public int? ItemRef{Entity2}Ptr { get; set; } // ^Entity2
+
+		[FieldDateTime()]
+		public DateTime? ItemDateCreate { get; set; }
+
+		[FieldDateTime()]
+		public DateTime? ItemDateUpdate { get; set; }
+
+
+
+
+	Schema
+		Text50			string50
+		Text100			string100
+		Text250			string250
+		Text400			string400
+		TextBox400		string400
+		Memo			string*
+		Doc				string*
+		Name			string50	^([a-zA-Z_][0-9a-zA-Z_-]+)$
+		Varname			string50	^([a-zA-Z_][0-9a-zA-Z_]+)$
+		Email			string50	^email$
+		Int				int
+		Long			long
+		Float			float
+		Double			double
+		Decimal			decimal
+		Datetime		DateTime?
+		Date			DateTime?
+		Time			DateTime?
+		Bool			bool
+		Enum			int
+		Set				string400
+		Reference		int?
+		PtrInt			int?
+		
+
+	C#
+		string
+		int
+		int?
+		long
+		double
+		float
+		decimal
+		DateTime?
+		bool
+
+
+	Validations
+
+	    StringValidationAttribute
+            IsRequired
+            MinLength
+            MaxLength
+            RegexPattern
+            CompareProperty
+
+		IntValidationAttribute
+			IsRequired
+			NullValue
+			Min
+			Max
+
+		LongValidationAttribute
+			IsRequired
+			NullValue
+			Min
+			Max
+
+		FloatValidationAttribute
+			IsRequired
+			NullValue
+			Min
+			Max
+
+		DoubleValidationAttribute
+			IsRequired
+			NullValue
+			Min
+			Max
+
+		DecimalValidationAttribute
+			IsRequired
+			NullValue
+			Min
+			Max
+
+		DateTimeValidationAttribute
+			IsRequired
+			NullValue
+			Min
+			Max
+
+		RegistryValidationAttribute
+			IsRequired
+			NullValue
+
+
+	Fields
+
+		FieldMemoAttribute
+		FieldTextBox400Attribute	MaxLength = 400;
+		FieldText50Attribute		MaxLength = 50;
+		FieldText100Attribute		MaxLength = 100;
+		FieldText250Attribute		MaxLength = 250;
+		FieldText400Attribute		MaxLength = 400;
+		FieldDocAttribute
+		FieldVarnameAttribute		MaxLength = 50; RegexPattern = _Consts.REGEX_VARNAME;
+		FieldEmailAttribute			MaxLength = 50; RegexPattern = _Consts.REGEX_EMAIL;
+		FieldBoolAttribute
+		FieldIntAttribute
+		FieldLongAttribute
+		FieldFloatAttribute
+		FieldDoubleAttribute
+		FieldDecimalAttribute
+		FieldDateTimeAttribute
+		FieldDateAttribute
+		FieldTimeAttribute
+		FieldRegistryAttribute
+		FieldEnumAttribute
+		FieldSetAttribute			MaxLength = 400;
+		FieldReferenceAttribute
+		FieldPtrIntAttribute
+		FieldHtmlAttribute
+		FieldPasswordAttribute		MaxLength = 50; RegexPattern = _Consts.REGEX_PASSWORD;
