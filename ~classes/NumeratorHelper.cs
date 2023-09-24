@@ -1,95 +1,95 @@
 ﻿namespace Ans.Net7.Common
 {
 
-    public class NumeratorHelper
-    {
+	public class NumeratorHelper
+	{
 
-        /* ctors */
-
-
-        public NumeratorHelper(
-            int maxLevel)
-        {
-            MaxLevel = maxLevel;
-            Counters = new int[maxLevel];
-            Level = 0;
-            CounterReset(1);
-        }
+		/* ctors */
 
 
-        /* readonly properties */
+		public NumeratorHelper(
+			int maxLevel)
+		{
+			MaxLevel = maxLevel;
+			Counters = new int[maxLevel];
+			Level = 0;
+			CounterReset(1);
+		}
 
 
-        public int MaxLevel { get; private set; }
-        public int Level { get; private set; }
-        public int[] Counters { get; private set; }
+		/* readonly properties */
 
 
-        /* funcs */
+		public int MaxLevel { get; private set; }
+		public int Level { get; private set; }
+		public int[] Counters { get; private set; }
 
 
-        public IEnumerable<int> GetCurrent()
-        {
-            return Counters.Take(Level + 1);
-        }
+		/* functions */
 
 
-        public string GetId()
-        {
-            return GetCurrent().MakeFromCollection(
-                x => x.ToString(), null, null, "_");
-        }
+		public IEnumerable<int> GetCurrent()
+		{
+			return Counters.Take(Level + 1);
+		}
 
 
-        public string GetView()
-        {
-            return GetCurrent().MakeFromCollection(
-                x => x.ToString(), null, "{0}.", null);
-        }
+		public string GetId()
+		{
+			return GetCurrent().MakeFromCollection(
+				x => x.ToString(), null, null, "_");
+		}
 
 
-        /* methods */
+		public string GetView()
+		{
+			return GetCurrent().MakeFromCollection(
+				x => x.ToString(), null, "{0}.", null);
+		}
 
 
-        public void CounterReset(
-            int start)
-        {
-            Counters[Level] = start;
-        }
+		/* methods */
 
 
-        public void CounterIncrease()
-        {
-            Counters[Level]++;
-        }
+		public void CounterReset(
+			int start)
+		{
+			Counters[Level] = start;
+		}
 
 
-        public void CounterDecrease()
-        {
-            Counters[Level]--;
-        }
+		public void CounterIncrease()
+		{
+			Counters[Level]++;
+		}
 
 
-        public void LevelIncrease()
-        {
-            if (Level < MaxLevel)
-            {
-                CounterDecrease();
-                Level++;
-                CounterReset(1);
-            }
-        }
+		public void CounterDecrease()
+		{
+			Counters[Level]--;
+		}
 
 
-        public void LevelDecrease()
-        {
-            if (Level > 0)
-            {
-                Level--;
-                CounterIncrease();
-            }
-        }
+		public void LevelIncrease()
+		{
+			if (Level < MaxLevel)
+			{
+				CounterDecrease();
+				Level++;
+				CounterReset(1);
+			}
+		}
 
-    }
+
+		public void LevelDecrease()
+		{
+			if (Level > 0)
+			{
+				Level--;
+				CounterIncrease();
+			}
+		}
+
+	}
 
 }

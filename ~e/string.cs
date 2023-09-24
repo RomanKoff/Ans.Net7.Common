@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 namespace Ans.Net7.Common
 {
 
-    public static partial class _e
+	public static partial class _e
     {
 
         /*

@@ -3,9 +3,8 @@
 namespace Ans.Net7.Common
 {
 
-    public class ContentInfo
+	public class ContentInfo
 	{
-
 		public ContentInfo(
 			string extention,
 			string contentType,
@@ -20,16 +19,15 @@ namespace Ans.Net7.Common
 			IsJpeg = isJpeg;
 		}
 
-		public string Extention { get; set; }
-		public string ContentType { get; set; }
-		public ContentGroupEnum Group { get; set; }
-		public bool IsWebImage { get; set; }
-		public bool IsJpeg { get; set; }
+		public string Extention { get; private set; }
+		public string ContentType { get; private set; }
+		public ContentGroupEnum Group { get; private set; }
+		public bool IsWebImage { get; private set; }
+		public bool IsJpeg { get; private set; }
 
 		public MediaTypeHeaderValue MediaType
 			=> _mediaType ??= new MediaTypeHeaderValue(ContentType);
 		private MediaTypeHeaderValue _mediaType;
-
 	}
 
 
