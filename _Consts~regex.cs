@@ -7,7 +7,7 @@ namespace Ans.Net7.Common
 	{
 
 		public const string REGEX_ENCODE = @"[]^\\-]";
-		public const string REGEX_NAME = @"^([a-zA-Z_][0-9a-zA-Z_-]+)$";
+		public const string REGEX_NAME = @"^([a-z_][0-9a-z_-]+)$";
 		public const string REGEX_VARNAME = @"^([a-zA-Z_][0-9a-zA-Z_]+)$";
 		public const string REGEX_IPATH = @"^(([a-zA-Z_][0-9a-zA-Z_-]+)/){0,}([a-zA-Z_][0-9a-zA-Z_-]+)$";
 		public const string REGEX_NAME_STRICT = @"^([a-z_][0-9a-z_-]+)$";

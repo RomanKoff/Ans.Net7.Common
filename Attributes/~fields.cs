@@ -1,7 +1,4 @@
-﻿using Ans.Net7.Common.Attributes.Data;
-using System.ComponentModel.DataAnnotations;
-
-namespace Ans.Net7.Common.Attributes.Fields
+﻿namespace Ans.Net7.Common.Attributes.Fields
 {
 
 	/*

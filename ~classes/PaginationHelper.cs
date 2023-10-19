@@ -3,7 +3,7 @@
 namespace Ans.Net7.Common
 {
 
-    public class PaginationHelper
+	public class PaginationHelper
 	{
 
 		/* ctors */
@@ -12,6 +12,7 @@ namespace Ans.Net7.Common
 		public PaginationHelper(
 			int itemsOnPage,
 			int totalItems,
+			int currentPage = 1,
 			int offset = 4)
 		{
 			if (itemsOnPage < 1)
@@ -21,7 +22,8 @@ namespace Ans.Net7.Common
 			Offset = SuppMath.GetRestrict(offset, 1, 9);
 			ItemsOnPage = itemsOnPage;
 			TotalItems = totalItems;
-			TotalPages = (int)Math.Ceiling((double)TotalItems / ItemsOnPage);
+			TotalPages = (int)Math.Ceiling(TotalItems / (double)ItemsOnPage);
+			CurrentPage = currentPage;
 		}
 
 
@@ -79,7 +81,7 @@ namespace Ans.Net7.Common
 					NextPage = TotalPages;
 			}
 		}
-		private int _currentPage = 0;
+		private int _currentPage = 1;
 
 
 		/* readonly properties */

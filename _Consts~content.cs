@@ -1,7 +1,7 @@
 ﻿namespace Ans.Net7.Common
 {
 
-    public static partial class _Consts
+	public static partial class _Consts
 	{
 
 		public static readonly ContentInfo CONTENTINFO_BIN
@@ -10,8 +10,9 @@
 
 		public static readonly ContentInfo[] CONTENTINFOS =
 		{
-            // Arcive
-            new(".gtar", "application/x-gtar", ContentGroupEnum.Archive),
+			// Arcive
+			new(".apk", "application/vnd.android.package-archive", ContentGroupEnum.Archive),
+			new(".gtar", "application/x-gtar", ContentGroupEnum.Archive),
 			new(".gz", "application/x-gzip", ContentGroupEnum.Archive),
 			new(".tar", "application/x-tar", ContentGroupEnum.Archive),
 			new(".tgz", "application/x-compressed", ContentGroupEnum.Archive),
@@ -83,19 +84,19 @@
 			new(".jpe", "image/jpeg", ContentGroupEnum.Image, isWebImage: true, isJpeg: true),
 			new(".jpeg", "image/jpeg", ContentGroupEnum.Image, isWebImage: true, isJpeg: true),
 			new(".jpg", "image/jpeg", ContentGroupEnum.Image, isWebImage: true, isJpeg: true),
-			new(".pbm", "image/x-portable-bitmap", ContentGroupEnum.Image),
+			new(".pbm", "image/x-portable-bitmap", ContentGroupEnum.Image, isWebImage: true),
 			new(".pgm", "image/x-portable-graymap", ContentGroupEnum.Image),
 			new(".png", "image/png", ContentGroupEnum.Image, isWebImage: true),
 			new(".pnm", "image/x-portable-anymap", ContentGroupEnum.Image),
 			new(".ppm", "image/x-portable-pixmap", ContentGroupEnum.Image),
 			new(".ras", "image/x-cmu-raster", ContentGroupEnum.Image),
 			new(".rgb", "image/x-rgb", ContentGroupEnum.Image),
-			new(".svg", "images/svg+xml", ContentGroupEnum.Image, isWebImage: true),
-			new(".svgz", "images/svg+xml", ContentGroupEnum.Image, isWebImage: true),
-			new(".tif", "image/tiff", ContentGroupEnum.Image),
-			new(".tiff", "image/tiff", ContentGroupEnum.Image),
+			new(".svg", "images/svg+xml", ContentGroupEnum.Image),
+			new(".svgz", "images/svg+xml", ContentGroupEnum.Image),
+			new(".tif", "image/tiff", ContentGroupEnum.Image, isWebImage: true),
+			new(".tiff", "image/tiff", ContentGroupEnum.Image, isWebImage: true),
 			new(".wbmp", "image/vnd.wap.wbmp", ContentGroupEnum.Image),
-			new(".webp", "image/webp", ContentGroupEnum.Image),
+			new(".webp", "image/webp", ContentGroupEnum.Image, isWebImage: true),
 			new(".xbm", "image/x-xbitmap", ContentGroupEnum.Image),
 			new(".xpm", "image/x-xpixmap", ContentGroupEnum.Image),
 			new(".xwd", "image/x-xwindowdump", ContentGroupEnum.Image),			

@@ -178,7 +178,7 @@ namespace Ans.Net7.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ############ КБ.
+        ///   Looks up a localized string similar to ### ### ### ### КБ.
         /// </summary>
         public static string Format_SizeKB {
             get {

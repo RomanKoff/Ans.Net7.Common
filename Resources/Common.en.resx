@@ -157,7 +157,7 @@
     <value>Yesterday</value>
   </data>
   <data name="Format_SizeKB" xml:space="preserve">
-    <value>############ KB</value>
+    <value>### ### ### ### KB</value>
   </data>
   <data name="Text_AllItems" xml:space="preserve">
     <value>–all–</value>

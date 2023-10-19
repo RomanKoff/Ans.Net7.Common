@@ -8,13 +8,16 @@ namespace Ans.Net7.Common
     {
 
         /*
+		 * void Register_CodePagesEncodingProvider();
 		 * void CreateDirectoryIfNotExists(string path);
 		 * void DeleteDirectoryIfExists(string path);
 		 * void DeleteFileIfExists(string path);
-         * void FileWrite(string filename, string content, EncodingsEnum encoding = EncodingsEnum.UTF8, FileMode mode = FileMode.Create);
-		 * void FileWrite(string filename, byte[] content, FileMode mode);
+         * void FileWrite(string path, string content, EncodingsEnum encoding = EncodingsEnum.UTF8, FileMode mode = FileMode.Create);
+		 * void FileWrite(string path, byte[] content, FileMode mode);
 		 * 
-		 * string FileRead(string filename, EncodingsEnum encoding = EncodingsEnum.UTF8);
+		 * ContentInfo GetContentInfo(string extention);
+		 * 
+		 * string FileRead(string path, EncodingsEnum encoding = EncodingsEnum.UTF8);
          * string GetCatalogName(int id);
 		 * string GetFileName(string path);
 		 * string GetFileNameWithoutExtension(string path);
@@ -23,12 +26,12 @@ namespace Ans.Net7.Common
 		 * string[] GetFilenameHalfs(string filename);
 		 * 
 		 * string GetFileBegin(FileStream stream, int size = 255);
-		 * string GetFileBegin(string filename, int size = 255);
+		 * string GetFileBegin(string path, int size = 255);
 		 * string GetFileSHA1(FileStream stream, byte[] salt);
 		 * string GetFileSHA1(FileStream stream, string salt);
 		 * string GetFileSHA1(FileStream stream);
-		 * string GetFileSHA1(string filename, byte[] salt);
-		 * string GetFileSHA1(string filename, string salt);
+		 * string GetFileSHA1(string path, byte[] salt);
+		 * string GetFileSHA1(string path, string salt);
 		 * 
 		 * string GetSizeOfKB(long size);
 		 * string GetSizeOfKB(int size);
@@ -36,7 +39,7 @@ namespace Ans.Net7.Common
 		 * string GetSafeFilename(string filename);
 		 * 
 		 * bool HasInvalidPathChars(string path);
-		 * bool HasInvalidFileNameChars(string fileName);
+		 * bool HasInvalidFileNameChars(string filename);
 		 * 
 		 * Encoding GetEncoding(EncodingsEnum encoding);
 		 * 
@@ -45,6 +48,12 @@ namespace Ans.Net7.Common
 
 
         /* methods */
+
+
+        public static void Register_CodePagesEncodingProvider()
+        {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+        }
 
 
         /// <summary>
@@ -81,13 +90,13 @@ namespace Ans.Net7.Common
 
 
         public static void FileWrite(
-            string filename,
+            string path,
             string content,
             EncodingsEnum encoding = EncodingsEnum.UTF8,
             FileMode mode = FileMode.Create)
         {
             using var fs1 = new FileStream(
-                filename, mode);
+                path, mode);
             using var sw1 = new StreamWriter(
                 fs1, GetEncoding(encoding));
             sw1.Write(content);
@@ -95,11 +104,11 @@ namespace Ans.Net7.Common
 
 
         public static void FileWrite(
-            string filename,
+            string path,
             byte[] content,
             FileMode mode)
         {
-            using var fs1 = new FileStream(filename, mode);
+            using var fs1 = new FileStream(path, mode);
             fs1.Write(content, 0, content.Length);
         }
 
@@ -107,12 +116,21 @@ namespace Ans.Net7.Common
         /* functions */
 
 
+        public static ContentInfo GetContentInfo(
+            string extention)
+        {
+            return _Consts.CONTENTINFOS.FirstOrDefault(
+                x => x.Extention.Equals(extention, StringComparison.InvariantCultureIgnoreCase))
+                    ?? _Consts.CONTENTINFO_BIN;
+        }
+
+
         public static string FileRead(
-            string filename,
+            string path,
             EncodingsEnum encoding = EncodingsEnum.UTF8)
         {
             using var fs1 = new FileStream(
-                filename, FileMode.Open, FileAccess.Read, FileShare.Read);
+                path, FileMode.Open, FileAccess.Read, FileShare.Read);
             using var sr1 = new StreamReader(
                 fs1, GetEncoding(encoding));
             return sr1.ReadToEnd();
@@ -197,11 +215,11 @@ namespace Ans.Net7.Common
 
 
         public static string GetFileBegin(
-            string filename,
+            string path,
             int size = 255)
         {
             using var stream1 = new FileStream(
-                filename, FileMode.Open, FileAccess.Read, FileShare.Read);
+                path, FileMode.Open, FileAccess.Read, FileShare.Read);
             return GetFileBegin(stream1, size);
         }
 
@@ -238,20 +256,20 @@ namespace Ans.Net7.Common
 
 
         public static string GetFileSHA1(
-            string filename,
+            string path,
             byte[] salt)
         {
             using var stream1 = new FileStream(
-                filename, FileMode.Open, FileAccess.Read, FileShare.Read);
+                path, FileMode.Open, FileAccess.Read, FileShare.Read);
             return GetFileSHA1(stream1, salt);
         }
 
 
         public static string GetFileSHA1(
-            string filename,
+            string path,
             string salt)
         {
-            return GetFileSHA1(filename, Encoding.Unicode.GetBytes(salt));
+            return GetFileSHA1(path, Encoding.Unicode.GetBytes(salt));
         }
 
 
@@ -260,7 +278,7 @@ namespace Ans.Net7.Common
         {
             long l1 = 1;
             if (size >= 1024)
-                l1 = (size + 511) / 1024;
+                l1 = (long)Math.Ceiling((decimal)size / 1024);
             return l1.ToString(Resources.Common.Format_SizeKB).TrimStart();
         }
 
@@ -330,9 +348,9 @@ namespace Ans.Net7.Common
 
 
         public static bool HasInvalidFileNameChars(
-            string fileName)
+            string filename)
         {
-            return fileName.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0;
+            return filename.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0;
         }
 
 

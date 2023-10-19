@@ -1,0 +1,117 @@
+﻿namespace Ans.Net7.Common._Todo
+{
+
+    public class DictStringItem
+    {
+        public string Value { get; set; }
+        public int Level { get; set; }
+        public bool IsLabel { get; set; }
+    }
+
+
+
+    public class DictString
+    {
+
+        private readonly Dictionary<string, DictStringItem> _dict = new();
+
+
+        /* ctor */
+
+
+        public DictString()
+        {
+        }
+
+
+        /* functions */
+
+
+        public DictStringItem GetItem(
+            string key)
+        {
+            if (_dict.TryGetValue(key, out var value1) && !value1.IsLabel)
+                return value1;
+            return null;
+        }
+
+
+        public string GetKey(
+            string value)
+        {
+            return _dict
+                .FirstOrDefault(x => !x.Value.IsLabel && x.Value.Value.Equals(value))
+                .Key;
+        }
+
+
+        public string GetKeyForValue(
+            string value,
+            string newKey = null)
+        {
+            var key1 = GetKey(value);
+            if (key1 != null)
+                return key1;
+            _dict.Add(
+                newKey ?? _dict.Count.ToString(),
+                new DictStringItem { Value = value });
+            return newKey;
+        }
+
+
+        public string GetValue(
+            string key)
+        {
+            return GetItem(key)?.Value;
+        }
+
+
+        public string GetValue(
+            int key)
+        {
+            return GetValue(key.ToString());
+        }
+
+
+        public int GetLevel(
+            string key)
+        {
+            return GetItem(key)?.Level ?? 0;
+        }
+
+
+        public int GetLevel(
+            int key)
+        {
+            return GetLevel(key.ToString());
+        }
+
+
+        public int GetLevel(
+            int? key)
+        {
+            return key == null
+                ? 0 : GetLevel(key.Value);
+        }
+
+
+        public string GetValueForKeyInclusion(
+            string keyInclusion)
+        {
+            return _dict
+                .FirstOrDefault(x => x.Key.IndexOf(keyInclusion) > 0)
+                .Value?.Value;
+        }
+
+
+        public string GetValueForKeyExpansion(
+            string keyExpansion)
+        {
+            return _dict
+                .FirstOrDefault(x => keyExpansion.IndexOf(x.Key) > 0)
+                .Value?.Value;
+        }
+
+    }
+
+}

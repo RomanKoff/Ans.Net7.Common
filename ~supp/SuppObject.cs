@@ -36,6 +36,10 @@
 			{
 				"Boolean" => "bool",
 				"Int32" => "int",
+				"Int64" => "long",
+				"Single" => "float",
+				"Double" => "double",
+				"Decimal" => "decimal",
 				"String" => "string",
 				"Void" => "void",
 				_ => name

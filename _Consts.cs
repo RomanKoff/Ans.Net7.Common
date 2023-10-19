@@ -36,15 +36,17 @@ namespace Ans.Net7.Common
 			= Encoding.UTF8;
 
 
-		/*
+        /*
 		 * Support win1251 and koi8r:
 		 * Using System.Text.Encoding.CodePages 
-		 * Program.cs -> Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+		 * Program.cs -> 
+		 *		SuppIO.Register_CodePagesEncodingProvider();
+		 *		// Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 		 * https://ru.stackoverflow.com/questions/1387144/%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4-%D0%B8%D0%B7-koi8-r-c
 		 */
 
 
-		public static readonly Encoding ENCODING_WINDOWS1251
+        public static readonly Encoding ENCODING_WINDOWS1251
 			= Encoding.GetEncoding(1251);
 
 

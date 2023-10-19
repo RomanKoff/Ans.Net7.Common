@@ -6,9 +6,6 @@ namespace Ans.Net7.Common
 	public class InfoBuilder
 	{
 
-		private readonly Type _type;
-
-
 		/* ctor */
 
 
@@ -16,7 +13,7 @@ namespace Ans.Net7.Common
 			Type type,
 			object obj = null)
 		{
-			_type = type;
+			InfoType = type;
 			_parse();
 			if (obj != null)
 			{
@@ -33,6 +30,8 @@ namespace Ans.Net7.Common
 		/* readonly properties */
 
 
+		public Type InfoType { get; private set; }
+		public IEnumerable<InfoMethod> Ctors { get; private set; }
 		public IEnumerable<InfoProperty> Properties { get; private set; }
 		public IEnumerable<InfoProperty> ReadonlyProperties { get; private set; }
 		public IEnumerable<InfoProperty> WriteonlyProperties { get; private set; }
@@ -46,7 +45,12 @@ namespace Ans.Net7.Common
 		private void _parse()
 		{
 			var type0 = typeof(System.Object);
-			var methods1 = _type.GetMethods()
+			Ctors = InfoType.GetConstructors().Select(x => new InfoMethod
+			{
+				Name = x.Name,
+				Parameters = x.GetCSharpParams()
+			});
+			var methods1 = InfoType.GetMethods()
 				.Where(x => x.DeclaringType != type0)
 				.OrderBy(x => x.Name);
 			List<MethodInfo> getter1 = new();
@@ -106,13 +110,6 @@ namespace Ans.Net7.Common
 
 
 
-	public class _Info_Base
-	{
-		public string Name { get; set; }
-	}
-
-
-
 	public class InfoProperty
 		: _Info_Base
 	{
@@ -137,6 +134,13 @@ namespace Ans.Net7.Common
 		: InfoMethod
 	{
 		public string Return { get; set; }
+	}
+
+
+
+	public class _Info_Base
+	{
+		public string Name { get; set; }
 	}
 
 }

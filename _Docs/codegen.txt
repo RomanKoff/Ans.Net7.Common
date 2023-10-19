@@ -1,29 +1,44 @@
 
+
+	codegen.xml
+
+		catalog
+		---------
+			
+			entity
+			---------
+				
+				property
+				---------
+									
+				
+
+
 	System
 
 		[Key]
 		int Id
 
 		[FieldPtrInt(IsRequired = true)]
-		public int? ItemMasterPtr { get; set; }
+		public int RefMasterPtr { get; set; }
 
 		[FieldPtrInt()]
-		public int? ItemParentPtr { get; set; } // ^Entity
+		public int? RefParentPtr { get; set; } // ^Entity
 
 		[FieldInt()]
-		public int ItemOrder { get; set; }
+		public int Order { get; set; }
 
 		[FieldPtrInt()]
-		public int? ItemRef{Entity1}Ptr { get; set; } // ^Entity1
+		public int? Ref{Prefix}{Entity1}Ptr { get; set; } // ^Entity1
 
 		[FieldPtrInt()]
-		public int? ItemRef{Entity2}Ptr { get; set; } // ^Entity2
+		public int? Ref{Prefix}{Entity2}Ptr { get; set; } // ^Entity2
+
+		[FieldDateTime(IsRequired = true)]
+		public DateTime DateCreate { get; set; }
 
 		[FieldDateTime()]
-		public DateTime? ItemDateCreate { get; set; }
-
-		[FieldDateTime()]
-		public DateTime? ItemDateUpdate { get; set; }
+		public DateTime? DateUpdate { get; set; }
 
 
 
@@ -36,7 +51,7 @@
 		TextBox400		string400
 		Memo			string*
 		Doc				string*
-		Name			string50	^([a-zA-Z_][0-9a-zA-Z_-]+)$
+		Name			string50	^([a-z_][0-9a-z_-]+)$
 		Varname			string50	^([a-zA-Z_][0-9a-zA-Z_]+)$
 		Email			string50	^email$
 		Int				int
@@ -143,3 +158,58 @@
 		FieldPtrIntAttribute
 		FieldHtmlAttribute
 		FieldPasswordAttribute		MaxLength = 50; RegexPattern = _Consts.REGEX_PASSWORD;
+
+
+
+
+RESX:
+
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Key1" xml:space="preserve">
+    <value>Value 1</value>
+	<comment>Comment 1</comment>
+  </data>
+</root>
+
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	
+	<!-- Generated: <#=System.DateTime.Now#> -->
+
+	<resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+	<resheader name="version"><value>2.0</value></resheader>
+	<resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+	<resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+	<data name="_List" xml:space="preserve">
+		<value><#=entity.TitleList#></value>
+		<comment>Title list mode text</comment>
+	</data>
+	<data name="_Create" xml:space="preserve">
+		<value><#=entity.TitleCreate#></value>
+		<comment>Title create mode text</comment>
+	</data>
+	<data name="_Edit" xml:space="preserve">
+		<value><#=entity.TitleEdit#></value>
+		<comment>Title edit mode text</comment>
+	</data>
+	<data name="_Delete" xml:space="preserve">
+		<value><#=entity.TitleDelete#></value>
+		<comment>Title delete mode text</comment>
+	</data>
+<#+		foreach (var i in entity.PropertyItemsCollection) {
+			if (!string.IsNullOrEmpty(i.Face)) { #>
+	<data name="<#=i.Name#>" xml:space="preserve">
+		<value><#=i.Face#></value>
+		<comment><#=i.Name#> field face</comment>
+	</data>
+<#+			}
+		} #>
+</root>
+

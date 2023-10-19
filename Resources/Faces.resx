@@ -117,61 +117,130 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Format_DateRange_Full" xml:space="preserve">
-    <value>d MMMM yyyy г.</value>
+  <data name="Address" xml:space="preserve">
+    <value>Адрес</value>
   </data>
-  <data name="Format_DateRange_WithinMonth" xml:space="preserve">
-    <value>%d</value>
+  <data name="Code" xml:space="preserve">
+    <value>Код</value>
   </data>
-  <data name="Format_DateRange_WithinYear" xml:space="preserve">
-    <value>d MMMM</value>
+  <data name="Comment" xml:space="preserve">
+    <value>Комментарий</value>
   </data>
-  <data name="Format_DateTime_ForCurrentYear" xml:space="preserve">
-    <value>d MMMM в H:mmmm</value>
+  <data name="CreateUser" xml:space="preserve">
+    <value>Автор</value>
   </data>
-  <data name="Format_DateTime_ForFull" xml:space="preserve">
-    <value>d MMMM yyyy г. в H:mmmm</value>
+  <data name="DateCreate" xml:space="preserve">
+    <value>Дата создания</value>
   </data>
-  <data name="Format_DateTime_ForToday" xml:space="preserve">
-    <value>сегодня в H:mmmm</value>
+  <data name="DateUpdate" xml:space="preserve">
+    <value>Дата редактирования</value>
   </data>
-  <data name="Format_DateTime_ForTomorrow" xml:space="preserve">
-    <value>завтра в H:mmmm</value>
+  <data name="Description" xml:space="preserve">
+    <value>Название</value>
   </data>
-  <data name="Format_DateTime_ForYesterday" xml:space="preserve">
-    <value>вчера в H:mmmm</value>
+  <data name="Email" xml:space="preserve">
+    <value>Адрес эл. почты</value>
   </data>
-  <data name="Format_Date_ForCurrentYear" xml:space="preserve">
-    <value>d MMMM</value>
+  <data name="FIO" xml:space="preserve">
+    <value>ФИО</value>
   </data>
-  <data name="Format_Date_ForFull" xml:space="preserve">
-    <value>d MMMM yyyy г.</value>
+  <data name="FullTitle" xml:space="preserve">
+    <value>Полное название</value>
   </data>
-  <data name="Format_Date_ForToday" xml:space="preserve">
-    <value>сегодня</value>
+  <data name="FullTitleEn" xml:space="preserve">
+    <value>Полное название (англ.)</value>
   </data>
-  <data name="Format_Date_ForTomorrow" xml:space="preserve">
-    <value>завтра</value>
+  <data name="FullTitleRu" xml:space="preserve">
+    <value>Полное название (рус.)</value>
   </data>
-  <data name="Format_Date_ForYesterday" xml:space="preserve">
-    <value>вчера</value>
+  <data name="Height" xml:space="preserve">
+    <value>Высота</value>
   </data>
-  <data name="Format_SizeKB" xml:space="preserve">
-    <value>### ### ### ### КБ</value>
+  <data name="Id" xml:space="preserve">
+    <value>Ключ</value>
   </data>
-  <data name="Text_AllItems" xml:space="preserve">
-    <value>–все–</value>
+  <data name="Info" xml:space="preserve">
+    <value>Дополнительная информация</value>
   </data>
-  <data name="Text_EmptyItem" xml:space="preserve">
-    <value>–нет–</value>
+  <data name="IsActive" xml:space="preserve">
+    <value>Активно</value>
   </data>
-  <data name="Text_Never" xml:space="preserve">
-    <value>никогда</value>
+  <data name="IsClose" xml:space="preserve">
+    <value>Закрыто</value>
   </data>
-  <data name="Text_PressAnyKeyToExit" xml:space="preserve">
-    <value>Нажмите любую клавишу для выхода</value>
+  <data name="IsDisabled" xml:space="preserve">
+    <value>Отключено</value>
   </data>
-  <data name="Text_PressEscToExit" xml:space="preserve">
-    <value>Нажмите ESC для выхода</value>
+  <data name="IsEnabled" xml:space="preserve">
+    <value>Включено</value>
+  </data>
+  <data name="IsHidden" xml:space="preserve">
+    <value>Скрытый</value>
+  </data>
+  <data name="IsRemoved" xml:space="preserve">
+    <value>Удалено</value>
+  </data>
+  <data name="Length" xml:space="preserve">
+    <value>Длина</value>
+  </data>
+  <data name="Link" xml:space="preserve">
+    <value>Ссылка</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>Номер</value>
+  </data>
+  <data name="Ord" xml:space="preserve">
+    <value>Сортировка</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Телефон</value>
+  </data>
+  <data name="Place" xml:space="preserve">
+    <value>Место</value>
+  </data>
+  <data name="Ratio" xml:space="preserve">
+    <value>Соотношение</value>
+  </data>
+  <data name="Remark" xml:space="preserve">
+    <value>Примечание</value>
+  </data>
+  <data name="ShortTitle" xml:space="preserve">
+    <value>Короткое название</value>
+  </data>
+  <data name="ShortTitleEn" xml:space="preserve">
+    <value>Короткое название (англ.)</value>
+  </data>
+  <data name="ShortTitleRu" xml:space="preserve">
+    <value>Короткое название (рус.)</value>
+  </data>
+  <data name="Site" xml:space="preserve">
+    <value>Сайт</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Теги</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="TitleEn" xml:space="preserve">
+    <value>Название (англ.)</value>
+  </data>
+  <data name="TitleRu" xml:space="preserve">
+    <value>Название (рус.)</value>
+  </data>
+  <data name="UpdateUser" xml:space="preserve">
+    <value>Редактор</value>
+  </data>
+  <data name="Url" xml:space="preserve">
+    <value>Ссылка</value>
+  </data>
+  <data name="Width" xml:space="preserve">
+    <value>Ширина</value>
   </data>
 </root>

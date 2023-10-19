@@ -11,6 +11,7 @@ namespace Ans.Net7.Common
 		 * string GetCSharpTypesName(this Type[] types);
 		 * string GetCSharpGenerics(this MethodInfo info);
 		 * string GetCSharpParams(this MethodInfo info);
+		 * string GetCSharpParams(this ConstructorInfo info)
 		 * string GetPropName(this MethodInfo info);
 		 * 
 		 * object GetPropertyValue(this object obj, string name, Type type);
@@ -26,27 +27,28 @@ namespace Ans.Net7.Common
 		 */
 
 
-
 		public static string GetCSharpTypeName(
-			this Type type)
+			this Type type,
+			bool IsDropNullable = false)
 		{
 			var s1 = type.Name;
 			if (s1.EndsWith("[]"))
 				return $"{SuppObject.GetCSharpName(s1[..^2])}[]";
 			if (s1.StartsWith("Nullable`"))
-				return $"{Nullable.GetUnderlyingType(type)?.GetCSharpTypeName()}?";
+				return $"{Nullable.GetUnderlyingType(type)?.GetCSharpTypeName(IsDropNullable)}{(IsDropNullable ? "" : "?")}";
 			int i1 = s1.IndexOf('`');
 			if (i1 > 0)
-				return $"{s1[..i1]}<{type.GenericTypeArguments.GetCSharpTypesName()}>";
+				return $"{s1[..i1]}<{type.GenericTypeArguments.GetCSharpTypesName(IsDropNullable)}>";
 			return SuppObject.GetCSharpName(s1);
 		}
 
 
 		public static string GetCSharpTypesName(
-			this Type[] types)
+			this Type[] types,
+			bool IsDropNullable = false)
 		{
 			return types.MakeFromCollection(
-				x => $"{x.GetCSharpTypeName()}", null, null, ", ");
+				x => $"{x.GetCSharpTypeName(IsDropNullable)}", null, null, ", ");
 		}
 
 
@@ -60,6 +62,18 @@ namespace Ans.Net7.Common
 
 		public static string GetCSharpParams(
 			this MethodInfo info)
+		{
+			return info.GetParameters().MakeFromCollection(
+				x =>
+					$"{(x.GetCustomAttribute(typeof(ParamArrayAttribute)) == null ? "" : "params ")}" +
+					$"{x.ParameterType.GetCSharpTypeName()} {x.Name}" +
+					$"{(x.HasDefaultValue ? $" = {SuppObject.GetCSharpValue(x.DefaultValue)}" : "")}",
+				null, null, ", ");
+		}
+
+
+		public static string GetCSharpParams(
+			this ConstructorInfo info)
 		{
 			return info.GetParameters().MakeFromCollection(
 				x =>
