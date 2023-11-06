@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Format_DateRange_Full" xml:space="preserve">
-    <value>d MMMM yyyy г.</value>
+    <value>d MMMM yyyy' г.'</value>
   </data>
   <data name="Format_DateRange_WithinMonth" xml:space="preserve">
     <value>%d</value>
@@ -127,37 +127,37 @@
     <value>d MMMM</value>
   </data>
   <data name="Format_DateTime_ForCurrentYear" xml:space="preserve">
-    <value>d MMMM в H:mmmm</value>
+    <value>d MMMM' в 'H:mmmm</value>
   </data>
   <data name="Format_DateTime_ForFull" xml:space="preserve">
-    <value>d MMMM yyyy г. в H:mmmm</value>
+    <value>d MMMM yyyy' г. в 'H:mmmm</value>
   </data>
   <data name="Format_DateTime_ForToday" xml:space="preserve">
-    <value>сегодня в H:mmmm</value>
+    <value>'сегодня в 'H:mmmm</value>
   </data>
   <data name="Format_DateTime_ForTomorrow" xml:space="preserve">
-    <value>завтра в H:mmmm</value>
+    <value>'завтра в 'H:mmmm</value>
   </data>
   <data name="Format_DateTime_ForYesterday" xml:space="preserve">
-    <value>вчера в H:mmmm</value>
+    <value>'вчера в 'H:mmmm</value>
   </data>
   <data name="Format_Date_ForCurrentYear" xml:space="preserve">
     <value>d MMMM</value>
   </data>
   <data name="Format_Date_ForFull" xml:space="preserve">
-    <value>d MMMM yyyy г.</value>
+    <value>d MMMM yyyy' г.'</value>
   </data>
   <data name="Format_Date_ForToday" xml:space="preserve">
-    <value>сегодня</value>
+    <value>'сегодня'</value>
   </data>
   <data name="Format_Date_ForTomorrow" xml:space="preserve">
-    <value>завтра</value>
+    <value>'завтра'</value>
   </data>
   <data name="Format_Date_ForYesterday" xml:space="preserve">
-    <value>вчера</value>
+    <value>'вчера'</value>
   </data>
   <data name="Format_SizeKB" xml:space="preserve">
-    <value>### ### ### ### КБ</value>
+    <value>### ### ### ###' КБ'</value>
   </data>
   <data name="Text_AllItems" xml:space="preserve">
     <value>–все–</value>

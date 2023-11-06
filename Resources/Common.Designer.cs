@@ -70,7 +70,7 @@ namespace Ans.Net7.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to d MMMM yyyy г..
+        ///   Looks up a localized string similar to d MMMM yyyy&apos; г.&apos;.
         /// </summary>
         public static string Format_Date_ForFull {
             get {
@@ -79,7 +79,7 @@ namespace Ans.Net7.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to сегодня.
+        ///   Looks up a localized string similar to &apos;сегодня&apos;.
         /// </summary>
         public static string Format_Date_ForToday {
             get {
@@ -88,7 +88,7 @@ namespace Ans.Net7.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to завтра.
+        ///   Looks up a localized string similar to &apos;завтра&apos;.
         /// </summary>
         public static string Format_Date_ForTomorrow {
             get {
@@ -97,7 +97,7 @@ namespace Ans.Net7.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to вчера.
+        ///   Looks up a localized string similar to &apos;вчера&apos;.
         /// </summary>
         public static string Format_Date_ForYesterday {
             get {
@@ -106,7 +106,7 @@ namespace Ans.Net7.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to d MMMM yyyy г..
+        ///   Looks up a localized string similar to d MMMM yyyy&apos; г.&apos;.
         /// </summary>
         public static string Format_DateRange_Full {
             get {
@@ -133,7 +133,7 @@ namespace Ans.Net7.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to d MMMM в H:mmmm.
+        ///   Looks up a localized string similar to d MMMM&apos; в &apos;H:mmmm.
         /// </summary>
         public static string Format_DateTime_ForCurrentYear {
             get {
@@ -142,7 +142,7 @@ namespace Ans.Net7.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to d MMMM yyyy г. в H:mmmm.
+        ///   Looks up a localized string similar to d MMMM yyyy&apos; г. в &apos;H:mmmm.
         /// </summary>
         public static string Format_DateTime_ForFull {
             get {
@@ -151,7 +151,7 @@ namespace Ans.Net7.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to сегодня в H:mmmm.
+        ///   Looks up a localized string similar to &apos;сегодня в &apos;H:mmmm.
         /// </summary>
         public static string Format_DateTime_ForToday {
             get {
@@ -160,7 +160,7 @@ namespace Ans.Net7.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to завтра в H:mmmm.
+        ///   Looks up a localized string similar to &apos;завтра в &apos;H:mmmm.
         /// </summary>
         public static string Format_DateTime_ForTomorrow {
             get {
@@ -169,7 +169,7 @@ namespace Ans.Net7.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to вчера в H:mmmm.
+        ///   Looks up a localized string similar to &apos;вчера в &apos;H:mmmm.
         /// </summary>
         public static string Format_DateTime_ForYesterday {
             get {
@@ -178,7 +178,7 @@ namespace Ans.Net7.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ### ### ### ### КБ.
+        ///   Looks up a localized string similar to ### ### ### ###&apos; КБ&apos;.
         /// </summary>
         public static string Format_SizeKB {
             get {

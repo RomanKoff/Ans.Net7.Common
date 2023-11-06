@@ -56,7 +56,7 @@ namespace {DalNamespace}
             ModelBuilder modelBuilder)
         {{
 			Debug.WriteLine(""[{DalNamespace}.{ContextName}DbContext] OnModelCreating()"");
-{_getMapping()}{_getDefaults()}{_getRelSlaves()}{_getRelReferenceMasters()}
+{_getMapping()}{_getRequireds()}{_getDefaults()}{_getRelSlaves()}{_getRelReferenceMasters()}
 		}}
 
 	}}
@@ -101,19 +101,45 @@ namespace {DalNamespace}
 
 
 		/* -------------------------------------------------------------------- */
-		private string _getDefaults()
+		private string _getRequireds()
 		{
 			var sb1 = new StringBuilder();
 			foreach (var item1 in AllTables)
 			{
-				foreach (var item2 in item1.DefaultCSharpFields)
+				foreach (var item2 in item1.RequiredFields)
 				{
 					sb1.Append(@$"
 
 			modelBuilder.Entity<{item1.Name}>()
 				.Property(x => x.{item2.Name})
-				.HasDefaultValue({item2.DefaultCSharp});");
+				.IsRequired(true);");
 				}
+			}
+			if (sb1.Length > 0)
+			{
+				sb1.Insert(0, @$"
+
+            // requireds");
+			}
+			return sb1.ToString();
+		}
+		/* -------------------------------------------------------------------- */
+
+
+		/* -------------------------------------------------------------------- */
+		private string _getDefaults()
+		{
+			var sb1 = new StringBuilder();
+			foreach (var item1 in AllTables)
+			{
+			//	foreach (var item2 in item1.DefaultCSharpFields)
+			//	{
+			//		sb1.Append(@$"
+
+			//modelBuilder.Entity<{item1.Name}>()
+			//	.Property(x => x.{item2.Name})
+			//	.HasDefaultValue({item2.DefaultCSharp});");
+			//	}
 				foreach (var item2 in item1.DefaultSqlFields)
 				{
 					sb1.Append(@$"

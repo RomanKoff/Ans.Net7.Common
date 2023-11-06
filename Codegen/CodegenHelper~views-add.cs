@@ -46,7 +46,7 @@ namespace Ans.Net7.Common.Codegen
 			{
 				sb1.Append(@$"
 	<ans-field for=""@Model.{item1.Name}"">
-		<input class=""form-control"" asp-for=""{item1.Name}"" />
+		<input class=""form-control"" asp-for=""{item1.Name}"" />		
 	</ans-field>");
 			}
 			return sb1.ToString();

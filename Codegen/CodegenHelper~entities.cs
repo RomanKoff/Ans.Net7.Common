@@ -30,6 +30,7 @@ namespace Ans.Net7.Common.Codegen
 			sb1.Append(_getCSharpAttention());
 			sb1.Append(@$"
 using Ans.Net7.Common;
+using Ans.Net7.Common.Attributes;
 using Ans.Net7.Common.Crud;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;

@@ -117,61 +117,74 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Format_DateRange_Full" xml:space="preserve">
-    <value>MMMM d, yyyy</value>
+  <data name="MaxLength_TML" xml:space="preserve">
+    <value>Не должно содержать больше {1} символов</value>
+    <comment>Must not contain more than {1} characters</comment>
   </data>
-  <data name="Format_DateRange_WithinMonth" xml:space="preserve">
-    <value>%d</value>
+  <data name="MinLength_TML" xml:space="preserve">
+    <value>Не должно содержать меньше {1} символов</value>
+    <comment>Must not contain less than {1} characters</comment>
   </data>
-  <data name="Format_DateRange_WithinYear" xml:space="preserve">
-    <value>MMMM d</value>
+  <data name="RegularExpression" xml:space="preserve">
+    <value>Значение не соответствует формату</value>
+    <comment>The value does not match the format</comment>
   </data>
-  <data name="Format_DateTime_ForCurrentYear" xml:space="preserve">
-    <value>MMMM d' at 'H:mmmm</value>
+  <data name="Required" xml:space="preserve">
+    <value>Требуется значение</value>
+    <comment>A value is required</comment>
   </data>
-  <data name="Format_DateTime_ForFull" xml:space="preserve">
-    <value>MMMM d, yyyy' at 'H:mmmm</value>
+  <data name="_CaptchaFail" xml:space="preserve">
+    <value>Значение не соответствует</value>
   </data>
-  <data name="Format_DateTime_ForToday" xml:space="preserve">
-    <value>'Today at 'H:mmmm</value>
+  <data name="_ExceededParameters" xml:space="preserve">
+    <value>Превышено количество параметров</value>
+    <comment>You have exceeded the number of parameters!</comment>
   </data>
-  <data name="Format_DateTime_ForTomorrow" xml:space="preserve">
-    <value>'Tomorrow at 'H:mmmm</value>
+  <data name="_FileSizeShouldNotExceed_TML" xml:space="preserve">
+    <value>Размер файла не должен превышать {0} байт</value>
+    <comment>The file size should not exceed {0} bytes</comment>
   </data>
-  <data name="Format_DateTime_ForYesterday" xml:space="preserve">
-    <value>'Yesterday at 'H:mmmm</value>
+  <data name="_InvalidFileType" xml:space="preserve">
+    <value>Неподдерживаемый тип файла</value>
+    <comment>Invalid file type</comment>
   </data>
-  <data name="Format_Date_ForCurrentYear" xml:space="preserve">
-    <value>MMMM d</value>
+  <data name="_ObjectContainsData" xml:space="preserve">
+    <value>Объект содержить данные</value>
   </data>
-  <data name="Format_Date_ForFull" xml:space="preserve">
-    <value>MMMM d, yyyy</value>
+  <data name="_RangeDate_Max_TML" xml:space="preserve">
+    <value>Не должно быть позже {0}</value>
+    <comment>Should be no later than {0}</comment>
   </data>
-  <data name="Format_Date_ForToday" xml:space="preserve">
-    <value>'Today'</value>
+  <data name="_RangeDate_Min_TML" xml:space="preserve">
+    <value>Не должно быть раньше {0}</value>
+    <comment>Should be not earlier than {0}</comment>
   </data>
-  <data name="Format_Date_ForTomorrow" xml:space="preserve">
-    <value>'Tomorrow'</value>
+  <data name="_RangeNumber_Max_TML" xml:space="preserve">
+    <value>Не должно быть больше {0}</value>
+    <comment>Should be no more than {0}</comment>
   </data>
-  <data name="Format_Date_ForYesterday" xml:space="preserve">
-    <value>'Yesterday'</value>
+  <data name="_RangeNumber_Min_TML" xml:space="preserve">
+    <value>Не должно быть меньше {0}</value>
+    <comment>Should be not less than {0}</comment>
   </data>
-  <data name="Format_SizeKB" xml:space="preserve">
-    <value>### ### ### ###' KB'</value>
+  <data name="_RequiresAUniqueValue" xml:space="preserve">
+    <value>Требуется уникальное значение</value>
   </data>
-  <data name="Text_AllItems" xml:space="preserve">
-    <value>–all–</value>
+  <data name="_SuchAnObjectExists" xml:space="preserve">
+    <value>Такой объект уже существует</value>
   </data>
-  <data name="Text_EmptyItem" xml:space="preserve">
-    <value>–empty–</value>
+  <data name="_UploadLocalPathError" xml:space="preserve">
+    <value>Ошибка локального пути загрузки</value>
+    <comment>Local path error</comment>
   </data>
-  <data name="Text_Never" xml:space="preserve">
-    <value>Never</value>
+  <data name="_UploadMoreFragments" xml:space="preserve">
+    <value>Попытка загрузить за один запрос несколько фрагментов одного файла</value>
+    <comment>Attempt to upload chunked file containing more than one fragment per request</comment>
   </data>
-  <data name="Text_PressAnyKeyToExit" xml:space="preserve">
-    <value>Press any key to exit</value>
+  <data name="_ValueAndConfirmDoNotMatch" xml:space="preserve">
+    <value>Подтверждение не совпадает с исходным значением</value>
   </data>
-  <data name="Text_PressEscToExit" xml:space="preserve">
-    <value>Press ESC to exit</value>
+  <data name="__Unknow" xml:space="preserve">
+    <value>Неизвестная ошибка</value>
   </data>
 </root>

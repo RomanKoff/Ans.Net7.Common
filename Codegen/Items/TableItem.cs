@@ -31,6 +31,7 @@ namespace Ans.Net7.Common.Codegen.Items
 					IsReadonly = true,
 					IsNullable = false,
 					Remark = $"^{master.EntityName}",
+					DefaultCSharp = "ptr"
 				});
 			}
 		}
@@ -145,6 +146,9 @@ namespace Ans.Net7.Common.Codegen.Items
 			=> ReferenceSlaves.Where(
 				x => x.Table.IsManyref && x.Table.ManyrefField2.Target == Name);
 
+		public IEnumerable<FieldItem> RequiredFields
+			=> Fields.Where(x => x.IsRequired);
+
 		public IEnumerable<FieldItem> RegistryFields
 			=> Fields.Where(x => x.IsRegistry);
 
@@ -212,12 +216,14 @@ namespace Ans.Net7.Common.Codegen.Items
 				Mode = PropertyModeEnum.Required,
 				Name = "DateCreate",
 				IsNullable = false,
+				DefaultCSharp = "DateTime.Now",
 				DefaultSql = "LOCALTIMESTAMP",
 			});
 			Fields.Add(new FieldItem
 			{
 				Type = PropertyTypeEnum.Datetime,
 				Name = "DateUpdate",
+				DefaultCSharp = "DateTime.Now",
 				DefaultSql = "LOCALTIMESTAMP"
 			});
 		}

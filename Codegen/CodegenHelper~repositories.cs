@@ -1,4 +1,5 @@
 ﻿using Ans.Net7.Common.Codegen.Items;
+using System.Formats.Asn1;
 using System.Text;
 
 namespace Ans.Net7.Common.Codegen
@@ -66,16 +67,44 @@ namespace {DalNamespace}.Repositories
 			var sb1 = new StringBuilder();
 			if (table.HasMaster)
 				sb1.Append(@$"
-		public override {table.EntityName} GetNew(int ptr)
+		public override {table.EntityName} GetNew(
+			int ptr)
 		{{
-			return new {table.EntityName} {{ MasterPtr = ptr }};
+			return new {table.EntityName}{_getCSharpDefaults(table)};			
 		}}");
 			else
 				sb1.Append(@$"
 		public override {table.EntityName} GetNew()
 		{{
-			return new {table.EntityName}();
+			return new {table.EntityName}{_getCSharpDefaults(table)};
 		}}");
+			return sb1.ToString();
+		}
+		/* -------------------------------------------------------------------- */
+
+
+		/* -------------------------------------------------------------------- */
+		private static string _getCSharpDefaults(
+			TableItem table)
+		{
+			var sb1 = new StringBuilder();
+			var items = table.DefaultCSharpFields;
+			if (items?.Any() ?? false)
+			{
+				sb1.Append(@"
+			{");
+				foreach (var item1 in items)
+				{
+					sb1.Append(@$"
+				{item1.Name} = {item1.DefaultCSharp},");
+				}
+				sb1.Append(@"
+			}");
+			}
+			else
+			{
+				sb1.Append("()");
+			}
 			return sb1.ToString();
 		}
 		/* -------------------------------------------------------------------- */

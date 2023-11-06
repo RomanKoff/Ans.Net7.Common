@@ -207,7 +207,7 @@ namespace Ans.Net7.Common.Codegen.Items
 				if (_typeCSharpName == null)
 				{
 					var s1 = TypeCSharp.GetCSharpTypeName();
-					_typeCSharpName = (IsNullable) ? $"{s1}?" : s1;
+					_typeCSharpName = (IsNullable || s1.StartsWith("Date")) ? $"{s1}?" : s1;
 				}
 				return _typeCSharpName;
 			}
@@ -231,15 +231,15 @@ namespace Ans.Net7.Common.Codegen.Items
 		{
 			var items1 = new List<string>();
 			if (IsRequired)
-				items1.Add($"[Required]");
+				items1.Add($"[AnsRequired]");
 			if (MinLength > 0)
-				items1.Add($"[MinLength({MinLength})]");
+				items1.Add($"[AnsMinLength({MinLength})]");
 			if (MaxLength > 0)
-				items1.Add($"[MaxLength({MaxLength})]");
+				items1.Add($"[AnsMaxLength({MaxLength})]");
 			if (!string.IsNullOrEmpty(RegularExpression))
-				items1.Add($"[RegularExpression(\"{RegularExpression}\")]");
-			if (!string.IsNullOrEmpty(DefaultCSharp))
-				items1.Add($"[DefaultValue({DefaultCSharp})]");
+				items1.Add($"[AnsRegularExpression(\"{RegularExpression}\")]");
+			//if (!string.IsNullOrEmpty(DefaultCSharp))
+			//	items1.Add($"[DefaultValue({DefaultCSharp})]");
 			return items1;
 		}
 
